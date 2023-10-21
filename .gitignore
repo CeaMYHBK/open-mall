@@ -1,0 +1,14 @@
+### IDEA ###
+.idea/*
+*.iml
+*/target/*
+*/*.iml
+*/*.log
+*.log
+*/.project
+*/.classpath
+*/.gitignore
+*/.settings
+.settings
+.project
+*/.bpmn

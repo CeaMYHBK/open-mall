@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ceam.shop.mapper.CeamCustomerCouponMapper">
+
+    <select id="listByCustomerId" resultType="com.ceam.mall.vo.CeamCouponVO">
+        select t.* from ceam_coupon t
+        left join ceam_customer_coupon c on c.coupon_id = t.id
+        where c.customer_id = #{customerId} and t.deleted = 0
+    </select>
+
+</mapper>

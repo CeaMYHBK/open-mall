@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ceam.shop.mapper.CeamOrderMapper">
+
+    <select id="page" resultType="com.ceam.mall.vo.CeamOrderVO" >
+        select
+            t.*,
+            c.nickname
+        from ceam_order t
+        left join ceam_customer c on c.id = t.customer_id
+        <if test="ew.customSqlSegment != null">
+            ${ew.customSqlSegment}
+        </if>
+    </select>
+</mapper>

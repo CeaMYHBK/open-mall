@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ceam.admin.mapper.CeamSysDictDetailMapper">
+
+    <select id="pageCeamSysDictDetailVO" resultType="com.ceam.admin.vo.CeamSysDictDetailVO">
+        select * from (
+        select t.*, d.name dictName from ceam_sys_dict_detail t
+        left join ceam_sys_dict d on d.id = t.dict_id
+        ) info
+        <if test="ew.customSqlSegment != null">
+            ${ew.customSqlSegment}
+        </if>
+    </select>
+
+</mapper>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ceam.shop.mapper.CeamGoodsCollectMapper">
+
+    <select id="page" resultType="com.ceam.mall.vo.CeamGoodsCollectVO">
+        select * from (
+            SELECT t.*,
+            c.nickname,
+            g.name goodsName
+            FROM ceam_goods_collect t
+            LEFT JOIN ceam_customer c ON c.id = t.customer_id
+            LEFT JOIN ceam_goods g ON g.id = t.value_id
+        ) info
+        <if test="ew.customSqlSegment != null">
+            ${ew.customSqlSegment}
+        </if>
+    </select>
+
+</mapper>

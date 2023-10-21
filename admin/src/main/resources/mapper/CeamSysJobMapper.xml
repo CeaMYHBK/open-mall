@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ceam.admin.mapper.CeamSysJobMapper">
+
+    <select id="pageCeamSysJobVO" resultType="com.ceam.admin.vo.CeamSysJobVO">
+        select * from (
+        select
+        t.* , d.name deptName
+        from ceam_sys_job t
+        left join ceam_sys_dept d on d.id = t.dept_id
+        ) info
+        <if test="ew.customSqlSegment != null">
+            ${ew.customSqlSegment}
+        </if>
+    </select>
+
+</mapper>
